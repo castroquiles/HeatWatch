@@ -235,6 +235,6 @@ Stuck? Not sure where to start? That's completely normal!
 
 - **GitHub Discussions** — best place for questions, ideas, and introductions
 - **Issue comments** — ask clarifying questions directly on the issue
-- **Email** — heatwatch@yourdomain.org for anything else
+- **Email** — admin@emergingrule.com for anything else
 
 We are a friendly community. There are no dumb questions. 🌍
