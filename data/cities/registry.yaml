@@ -1,0 +1,91 @@
+# HeatWatch City Registry
+#
+# To add a new city:
+# 1. Add an entry below following the schema
+# 2. Add a GeoJSON boundary file at data/sample/<city_id>/neighborhoods.geojson
+# 3. Open a pull request
+#
+# coordinate_system options:
+#   wgs84  - standard GPS coordinates (most of the world)
+#   gcj02  - Chinese offset system (required for mainland China cities)
+
+cities:
+  detroit:
+    name: Detroit
+    country: USA
+    region: Michigan
+    coordinate_system: wgs84
+    geojson: data/sample/detroit/neighborhoods.geojson
+    neighborhoods:
+      - id: west_pullman
+        name: West Pullman
+        lst_mean: 42.1
+        lst_p90: 46.0
+        tree_cover_pct: 4.0
+        pct_elderly: 18.0
+        pct_no_ac: 22.0
+        population: 24000
+      - id: englewood
+        name: Englewood
+        lst_mean: 40.5
+        lst_p90: 44.2
+        tree_cover_pct: 6.0
+        pct_elderly: 21.0
+        pct_no_ac: 28.0
+        population: 30000
+      - id: midtown
+        name: Midtown
+        lst_mean: 36.0
+        lst_p90: 39.5
+        tree_cover_pct: 22.0
+        pct_elderly: 12.0
+        pct_no_ac: 10.0
+        population: 18000
+      - id: lincoln_park
+        name: Lincoln Park
+        lst_mean: 31.8
+        lst_p90: 34.0
+        tree_cover_pct: 58.0
+        pct_elderly: 9.0
+        pct_no_ac: 5.0
+        population: 38000
+
+  phoenix:
+    name: Phoenix
+    country: USA
+    region: Arizona
+    coordinate_system: wgs84
+    geojson: data/sample/phoenix/neighborhoods.geojson
+    neighborhoods:
+      - id: downtown_phoenix
+        name: Downtown Phoenix
+        lst_mean: 48.2
+        lst_p90: 52.1
+        tree_cover_pct: 3.0
+        pct_elderly: 11.0
+        pct_no_ac: 8.0
+        population: 12000
+      - id: south_mountain
+        name: South Mountain
+        lst_mean: 46.5
+        lst_p90: 50.3
+        tree_cover_pct: 5.0
+        pct_elderly: 16.0
+        pct_no_ac: 12.0
+        population: 35000
+      - id: camelback_east
+        name: Camelback East
+        lst_mean: 43.0
+        lst_p90: 47.0
+        tree_cover_pct: 14.0
+        pct_elderly: 13.0
+        pct_no_ac: 6.0
+        population: 52000
+      - id: ahwatukee
+        name: Ahwatukee
+        lst_mean: 39.5
+        lst_p90: 43.0
+        tree_cover_pct: 28.0
+        pct_elderly: 18.0
+        pct_no_ac: 4.0
+        population: 78000

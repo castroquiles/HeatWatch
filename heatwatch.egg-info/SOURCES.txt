@@ -10,12 +10,15 @@ heatwatch.egg-info/top_level.txt
 src/cli.py
 src/analysis/__init__.py
 src/analysis/lst.py
+src/analysis/map_export.py
 src/analysis/ndvi.py
 src/analysis/vulnerability.py
 src/api/__init__.py
 src/api/main.py
 src/utils/__init__.py
+src/utils/city_registry.py
 src/utils/geo_utils.py
 tests/test_lst.py
+tests/test_map_export.py
 tests/test_ndvi.py
 tests/test_vulnerability.py
