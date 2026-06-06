@@ -1,6 +1,6 @@
-# Contributing to HeatWatch
+# Contributing to HeatWatch 
 
-Thank you for your interest in contributing! HeatWatch is built by volunteers from around the world.
+Thank you for your interest in contributing! HeatWatch is built by volunteers from around the world. Whether you're a student writing your first open-source PR or an experienced engineer, there's a place for you here.
 
 ---
 
@@ -19,167 +19,222 @@ Thank you for your interest in contributing! HeatWatch is built by volunteers fr
 
 ## Code of Conduct
 
-This project follows the [Contributor Covenant](https://www.contributor-covenant.org/). Be kind, be patient, be constructive. We are a climate-positive community.
+This project follows the [Contributor Covenant](https://www.contributor-covenant.org/). Be kind, be patient, be constructive. We are a climate-positive community — we try to model that in how we treat each other too.
 
 ---
 
 ## Getting Started
 
-1. Star the repo
-2. Read the README to understand what HeatWatch does
-3. Browse open issues: https://github.com/castroquiles/HeatWatch/issues
-4. Introduce yourself in Discussions (optional but welcome)
+1. **Star the repo** ⭐ (helps others find it)
+2. **Read the README** to understand what HeatWatch does
+3. **Browse [open issues](https://github.com/your-org/heatwatch/issues)**
+4. **Introduce yourself** in [GitHub Discussions](https://github.com/your-org/heatwatch/discussions) (optional but welcome!)
 
 ---
 
 ## Development Setup
 
-### macOS / Linux
+### Requirements
+
+- Python 3.10 or higher
+- Git
+- A virtual environment tool (built-in `venv` is fine)
+
+### Steps
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/HeatWatch.git
-cd HeatWatch
-git remote add upstream https://github.com/castroquiles/HeatWatch.git
+# Fork the repo on GitHub, then clone YOUR fork
+git clone https://github.com/YOUR_USERNAME/heatwatch.git
+cd heatwatch
+
+# Add the upstream remote so you can pull updates
+git remote add upstream https://github.com/your-org/heatwatch.git
+
+# Create and activate a virtual environment
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate       # macOS/Linux
+# venv\Scripts\activate        # Windows
+
+# Install the package in editable mode with dev dependencies
 pip install -e ".[dev]"
+
+# Copy the environment template
 cp .env.example .env
+# (For most contributions, you don't need real NASA credentials —
+#  the sample data in data/sample/ works without them)
+
+# Verify your setup
 pytest tests/ -v
 ```
 
----
-
-### Windows
-
-GDAL and rasterio have native dependencies that are difficult to build on Windows with plain pip. Use conda to handle binaries first, then pip-install the project.
-
-#### Prerequisites
-
-- Git: https://git-scm.com/download/win
-- Miniconda: https://conda.io/miniconda
-
-#### Step 1 - Initialize conda for your shell (first time only)
-
-If conda activate gives you a CommandNotFoundError, run this once and restart your terminal:
-
-```powershell
-conda init powershell
-```
-
-#### Step 2 - Create a conda environment
-
-```powershell
-conda create -n heatwatch python=3.11
-conda activate heatwatch
-```
-
-#### Step 3 - Install GDAL and spatial libraries via conda
-
-Do this before running pip install. Installing rasterio with pip on Windows without GDAL pre-installed will fail with missing DLL errors.
-
-```powershell
-conda install -c conda-forge gdal rasterio fiona shapely pyproj
-```
-
-#### Step 4 - Clone and install HeatWatch
-
-```powershell
-git clone https://github.com/YOUR_USERNAME/HeatWatch.git
-cd HeatWatch
-git remote add upstream https://github.com/castroquiles/HeatWatch.git
-pip install -e ".[dev]"
-```
-
-#### Step 5 - Verify
-
-```powershell
-pytest tests/ -v
-heatwatch --help
-```
-
-#### Common Windows Gotchas
-
-| Problem | Cause | Solution |
-|---------|-------|----------|
-| ImportError: DLL load failed | GDAL not on PATH | conda install -c conda-forge gdal |
-| conda activate does nothing | Shell not initialized | conda init powershell, restart terminal |
-| pip install rasterio fails | Missing GDAL headers | conda install -c conda-forge rasterio |
-| Long path errors during clone | Windows 260-char path limit | git config --global core.longpaths true |
-| Slow test execution | Anti-virus scanning bytecode | Add project folder to AV exclusions |
-
----
-
-### Docker (any platform)
-
-```bash
-docker build -t heatwatch .
-docker run --rm -it heatwatch pytest tests/ -v
-```
-
-Requires Docker Desktop: https://www.docker.com/products/docker-desktop/
+If you see all tests passing, you're ready to contribute!
 
 ---
 
 ## How to Pick an Issue
 
-For first-time contributors, look for issues tagged `good first issue`. For returning contributors, look for `help wanted` or `enhancement`.
+### For First-Time Contributors
 
-Comment "I'd like to work on this" to claim an issue. Do not open a PR for an unassigned issue.
+Look for issues tagged **`good first issue`**. These are:
+- Well-scoped with clear acceptance criteria
+- Don't require deep domain knowledge
+- Have pointers to the relevant code
+
+### For Returning Contributors
+
+Look for **`help wanted`** or **`enhancement`** tags. These may require more context — feel free to ask questions in the issue before starting.
+
+### Claiming an Issue
+
+1. Comment on the issue: *"I'd like to work on this"*
+2. A maintainer will assign it to you (usually within 48 hours)
+3. If you don't hear back in 3 days, ping us in Discussions
+
+**Please don't open a PR for an issue that hasn't been assigned to you** — it can create duplicate work.
 
 ---
 
 ## Coding Standards
 
-- Black for formatting (line length 88)
-- Ruff for linting
-- mypy for type checking (encouraged)
+### Style
 
+- We use **[Black](https://black.readthedocs.io/)** for formatting (line length: 88)
+- We use **[Ruff](https://docs.astral.sh/ruff/)** for linting
+- We use **[mypy](https://mypy.readthedocs.io/)** for type checking (optional for now, encouraged)
+
+Run all checks at once:
 ```bash
 black src/ tests/
 ruff check src/ tests/
 pytest tests/ -v
 ```
 
-Pre-commit hooks (recommended):
-
+Or use the pre-commit hooks (recommended):
 ```bash
 pip install pre-commit
 pre-commit install
+# Hooks now run automatically on git commit
 ```
 
-- Keep functions small, one job each
-- Docstrings on every public function (Google style)
-- Type hints on all function signatures
-- No magic numbers, use named constants
-- Comment the why, not the what
+### Code Principles
+
+- **Keep functions small** — one function, one job
+- **Write docstrings** for every public function (Google style)
+- **Add type hints** to function signatures
+- **No magic numbers** — use named constants with comments explaining units
+- **Comment the "why"**, not the "what" — the code shows what, comments explain why
+
+### Example of Good Code Style
+
+```python
+# src/analysis/ndvi.py
+
+# NDVI ranges from -1 (water/bare soil) to +1 (dense vegetation)
+NDVI_VEGETATION_THRESHOLD = 0.3  # Values above this indicate meaningful tree cover
+
+def compute_ndvi(red_band: np.ndarray, nir_band: np.ndarray) -> np.ndarray:
+    """
+    Compute the Normalized Difference Vegetation Index (NDVI).
+
+    NDVI = (NIR - Red) / (NIR + Red)
+    Higher values indicate denser, healthier vegetation.
+
+    Args:
+        red_band: Red spectral band array (Landsat Band 4).
+        nir_band: Near-infrared band array (Landsat Band 5).
+
+    Returns:
+        NDVI array with values in range [-1, 1].
+    """
+    # Avoid division by zero where both bands are zero
+    denominator = nir_band + red_band
+    ndvi = np.where(denominator == 0, 0, (nir_band - red_band) / denominator)
+    return ndvi.astype(np.float32)
+```
+
+### Testing
+
+- Every new function should have at least one test
+- Tests go in `tests/` mirroring the `src/` structure
+- Use the sample data in `data/sample/` for tests (no NASA credentials needed)
+- Run `pytest tests/ -v` before submitting your PR
 
 ---
 
 ## Pull Request Process
 
-1. Branch from main:
+1. **Create a branch** from `main`:
+   ```bash
+   git checkout main
+   git pull upstream main
+   git checkout -b feature/your-feature-name
+   # or: fix/issue-123-describe-fix
+   ```
 
-```bash
-git checkout main
-git pull upstream main
-git checkout -b feature/your-feature-name
-```
+2. **Make your changes** — small, focused commits are better than one giant commit
 
-2. Make changes with small focused commits
-3. Run tests and linting before pushing
-4. Push to your fork and open a PR
-5. Link the issue with "Closes #N"
-6. Respond to review feedback
+3. **Run tests and linting** before pushing:
+   ```bash
+   black src/ tests/
+   ruff check src/ tests/
+   pytest tests/ -v
+   ```
 
-PR checklist:
-- Tests pass locally
-- New code has tests
-- Docstrings added or updated
-- CHANGELOG.md updated for user-facing changes
-- Issue linked in PR description
+4. **Push to your fork**:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+5. **Open a Pull Request** on GitHub:
+   - Link the issue it closes: `Closes #42`
+   - Describe *what* you changed and *why*
+   - Add screenshots for any visual changes
+   - Keep PRs focused — one issue per PR
+
+6. **Respond to review feedback** — maintainers try to review within 5 business days
+
+7. **Squash and merge** — maintainers will handle this
+
+### PR Checklist
+
+- [ ] Tests pass locally
+- [ ] New code has tests
+- [ ] Docstrings added/updated
+- [ ] `CHANGELOG.md` updated (for user-facing changes)
+- [ ] Issue linked in PR description
 
 ---
 
 ## Commit Message Format
 
-We follow Conventional Commits: https://www.conventionalcommits.org/
+We follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <short description>
+
+[optional body]
+
+[optional footer]
+```
+
+**Types:** `feat`, `fix`, `docs`, `test`, `refactor`, `chore`, `style`
+
+**Examples:**
+```
+feat(ndvi): add NDVI computation from Landsat 9 bands
+fix(lst): handle missing data in temperature raster
+docs(contributing): add Windows setup instructions
+test(vulnerability): add tests for edge cases with no census data
+```
+
+---
+
+## Getting Help
+
+Stuck? Not sure where to start? That's completely normal!
+
+- **GitHub Discussions** — best place for questions, ideas, and introductions
+- **Issue comments** — ask clarifying questions directly on the issue
+- **Email** — admin@emergingrule.com for anything else
+
+We are a friendly community. There are no dumb questions. 🌍

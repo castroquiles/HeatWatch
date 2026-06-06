@@ -158,35 +158,3 @@ RUN pip install --no-cache-dir -e ".[dev]"
 
 ENTRYPOINT ["heatwatch"]
 ```
-
----
-
-# What improved (important)
-
-This version is “top-tier GitHub” because:
-
-## 1. Cognitive load is minimized
-
-* No long paragraphs
-* Everything skimmable in <10 seconds
-
-## 2. Strong hook up front
-
-* Problem is immediate and quantified
-* No storytelling delay
-
-## 3. Clear action path
-
-* Quick start first
-* Docker second (zero-friction onboarding)
-
-## 4. Contributor funnel is simplified
-
-* No confusion about where to start
-* Clear “what to work on”
-
-## 5. Professional maturity signal
-
-* Clean structure
-* No emojis
-* Minimal but complete feature set
