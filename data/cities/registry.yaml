@@ -89,3 +89,43 @@ cities:
         pct_elderly: 18.0
         pct_no_ac: 4.0
         population: 78000
+
+  san_juan:
+    name: San Juan
+    country: Puerto Rico
+    region: Metropolitan Area
+    coordinate_system: wgs84
+    geojson: data/sample/san_juan/neighborhoods.geojson
+    neighborhoods:
+      - id: santurce
+        name: Santurce
+        lst_mean: 38.5
+        lst_p90: 42.0
+        tree_cover_pct: 8.0
+        pct_elderly: 16.0
+        pct_no_ac: 18.0
+        population: 60000
+      - id: hato_rey
+        name: Hato Rey
+        lst_mean: 40.2
+        lst_p90: 44.1
+        tree_cover_pct: 5.0
+        pct_elderly: 13.0
+        pct_no_ac: 15.0
+        population: 48000
+      - id: rio_piedras
+        name: Rio Piedras
+        lst_mean: 36.8
+        lst_p90: 40.5
+        tree_cover_pct: 18.0
+        pct_elderly: 19.0
+        pct_no_ac: 22.0
+        population: 75000
+      - id: old_san_juan
+        name: Old San Juan
+        lst_mean: 34.5
+        lst_p90: 37.8
+        tree_cover_pct: 12.0
+        pct_elderly: 22.0
+        pct_no_ac: 8.0
+        population: 3000
