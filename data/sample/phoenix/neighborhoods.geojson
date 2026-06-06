@@ -1,0 +1,86 @@
+{
+  "type": "FeatureCollection",
+  "name": "phoenix_neighborhoods",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "neighborhood": "Downtown Phoenix",
+        "geometry_id": "downtown_phoenix",
+        "population": 12000,
+        "note": "approximate bounding box for sample use only"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-112.085, 33.460],
+          [-112.060, 33.460],
+          [-112.060, 33.440],
+          [-112.085, 33.440],
+          [-112.085, 33.460]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "neighborhood": "South Mountain",
+        "geometry_id": "south_mountain",
+        "population": 35000,
+        "note": "approximate bounding box for sample use only"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-112.080, 33.360],
+          [-112.040, 33.360],
+          [-112.040, 33.330],
+          [-112.080, 33.330],
+          [-112.080, 33.360]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "neighborhood": "Ahwatukee",
+        "geometry_id": "ahwatukee",
+        "population": 78000,
+        "note": "approximate bounding box for sample use only"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-112.060, 33.330],
+          [-111.980, 33.330],
+          [-111.980, 33.290],
+          [-112.060, 33.290],
+          [-112.060, 33.330]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "neighborhood": "Camelback East",
+        "geometry_id": "camelback_east",
+        "population": 52000,
+        "note": "approximate bounding box for sample use only"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-112.020, 33.510],
+          [-111.980, 33.510],
+          [-111.980, 33.480],
+          [-112.020, 33.480],
+          [-112.020, 33.510]
+        ]]
+      }
+    }
+  ]
+}
